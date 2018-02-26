@@ -22,7 +22,7 @@ public Plugin myinfo =
 public void OnPluginStart()
 {
 	CreateConVar("ttt2_traitor_door_version", TTT_PLUGIN_VERSION, TTT_PLUGIN_DESCRIPTION, FCVAR_NOTIFY | FCVAR_DONTRECORD | FCVAR_REPLICATED);
-	
+
 	HookEvent("round_start", Event_OnRoundStart);
 }
 
@@ -100,7 +100,7 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
 	GetEdictClassname(target, sClass, sizeof(sClass));
 	GetEntPropString(target, Prop_Data, "m_iName", sName, sizeof(sName));
 
-	if (StrContains(sClass, "_door", false) != -1 && StrContains(sName, "traitor", false) != -1)
+	if (StrContains(sClass, "_door", false) != -1 || StrContains(sClass, "_room", false) != -1 || StrContains(sName, "traitor", false) != -1)
 	{
 		AcceptEntityInput(target, "Unlock");
 		AcceptEntityInput(target, "Open");
